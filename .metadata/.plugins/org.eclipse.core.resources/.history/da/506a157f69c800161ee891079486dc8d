@@ -1,0 +1,5 @@
+package com.poalim.paas.mngr.config;
+
+public class AppConfig {
+
+}

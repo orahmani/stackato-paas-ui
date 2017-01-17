@@ -1,0 +1,9 @@
+export class PortfolioComponent implements OnInit{
+	errorMessage: string;
+  	stocks: UserStock[];
+  	mode = 'Observable';
+
+	constructor (private heroService: HeroService) {}
+
+  json = $.getJSON("http://localhost:8080/mng/getuserstocks/oren");
+}

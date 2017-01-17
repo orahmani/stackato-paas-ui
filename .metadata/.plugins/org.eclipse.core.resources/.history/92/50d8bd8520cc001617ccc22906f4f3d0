@@ -1,0 +1,26 @@
+import { Component, OnInit } from '@angular/core';
+import { UserStock } from './userstock';
+import { PortfolioService } from './portfolio.service';
+
+@Component({
+  selector: 'addstock-comp',
+  templateUrl: './sellstock.component.html',
+})
+
+export class SellStockComponent implements OnInit{
+	errorMessage: string;
+  	stock: UserStock;
+  	mode = 'Observable';
+
+	constructor (private portfolioService: PortfolioService) {}
+	
+	ngOnInit() { 
+		//this.getPortfolio();
+	 }
+	
+	sellStock(stockId) {
+	    this.portfolioService.addStock(userId,symbol,quantity)
+	                     .subscribe(error =>  this.errorMessage = <any>error);
+	}
+	
+}

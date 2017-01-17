@@ -1,0 +1,14 @@
+<h1>User Portfolio ({{mode}})</h1>
+
+<label>User ID: <input #userId /></label>
+<button (click)="showPortfoloio(userId.value); userId.value=''">Get Portfolio</button>
+
+
+<h3>Portfolio:</h3>
+
+<ul>
+  
+</ul>
+
+
+<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>

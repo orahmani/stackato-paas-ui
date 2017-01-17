@@ -1,0 +1,11 @@
+@Component({
+
+})
+export class UserStock {
+  userId = '';
+  name = '';
+  symbol = '';
+  quantity = '';
+  price = '';
+  date = '';
+}

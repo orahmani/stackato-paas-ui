@@ -1,0 +1,35 @@
+1482046223240	Rename package 'com.oren.practicehelper'
+1482046296838	Rename package 'com.oren.practicehelper'
+1482046331561	Rename package 'com.oren.practicehelper'
+1482046345832	Rename package 'com.oren.practicehelper'
+1482046363992	Rename package 'com.oren.practicehelper.jpa.entities'
+1482046375349	Rename package 'com.oren.practicehelper.jpa.repositories'
+1482046388991	Rename package 'com.oren.practicehelper.rest'
+1482046407117	Rename package 'com.oren.practicehelper.services.impl'
+1482046427366	Rename package 'com.oren.practicehelper.services'
+1482046464851	Rename package 'com.poalim.practicehelper.jpa'
+1482046484681	Rename package 'com.poalimpaas'
+1482046510621	Rename package 'com.poalim.practicehelper.jpa'
+1482046527934	Rename package 'com.poalim.practicehelper.jpa'
+1482046551601	Rename package 'com.poalim.practicehelper.jpa'
+1482046565056	Rename package 'com.poalim.practicehelper.jpa.entities'
+1482046578888	Rename package 'com.poalim.practicehelper.jpa.repositories'
+1482046593463	Rename package 'com.poalim.practicehelper.rest'
+1482046612039	Rename package 'com.poalim.practicehelper.services.impl'
+1482046626176	Rename package 'com.poalim.practicehelper.services'
+1482046644602	Rename package 'com.poalimpaas.jpa'
+1482046665505	Delete element
+1482046748511	Rename package 'com.poalim.paas.rest'
+1482046768855	Rename package 'com.poalim.paas.services'
+1482046791707	Rename package 'com.poalim.paas.services.impl'
+1482046813413	Delete element
+1482046832252	Delete element
+1482046840429	Delete element
+1482048165318	Delete element
+1482048182016	Delete element
+1482159589445	Rename field 'uri'
+1482161813329	Delete element
+1482393962973	Rename local variable 'symbul'
+1482396966863	Rename field 'userProtfolioServiceUrl'
+1482425708850	Move 'portfolio.jsp' to 'jsp'
+1482426537097	Rename type 'Config'

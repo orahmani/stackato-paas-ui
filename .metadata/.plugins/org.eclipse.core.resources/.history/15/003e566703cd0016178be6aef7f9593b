@@ -1,0 +1,77 @@
+package com.poalim.paas.mngr.connectors;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.text.MessageFormat;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.xml.ws.Response;
+
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+
+import com.poalim.paas.mngr.model.UserStock;
+
+public class UserPortfolioConnector {
+	
+	private static final String SERVER_URL = "";// "https://portfolio1.cfapps.io/userstock/";
+	
+	private static final String BUY_STOCK = "buy";
+	private static final String FIND_STOCKS = "findbyuserid/{0}";
+	private static final String SELL_STOCK = "sell/{0}";
+	
+	public static String addStock(UserStock stock)
+	{ 
+	    HttpHeaders headers = new HttpHeaders();
+	    headers.setContentType(MediaType.APPLICATION_JSON);
+
+	    StringBuffer requestJson = new StringBuffer();
+	    requestJson.append("{\"userId\":\"").append(stock.getUserId()).append("\",");
+	    requestJson.append("\"name\":\"").append(stock.getName()).append("\",");
+	    requestJson.append("\"symbol\":\"").append(stock.getSymbol()).append("\",");
+	    requestJson.append("\"quantity\":").append(stock.getQuantity()).append(",");
+	    requestJson.append("\"price\":").append(stock.getPrice()).append("");
+	    requestJson.append("}");
+
+	    HttpEntity<String> entity = new HttpEntity<String>(requestJson.toString(),headers);
+
+	    RestTemplate restTemplate = new RestTemplate();
+	    
+	    ResponseEntity<String> result = restTemplate.postForEntity(SERVER_URL + BUY_STOCK, entity, String.class);
+	     
+	    return result.getHeaders().get("Location").get(0);
+	}
+
+	
+	public static UserStock[] findUserStocks(String userId)
+	{ 
+	    HttpHeaders headers = new HttpHeaders();
+	    headers.setContentType(MediaType.APPLICATION_JSON);
+
+	    RestTemplate restTemplate = new RestTemplate();
+	    
+	    ResponseEntity<UserStock[]> result = restTemplate.getForEntity(SERVER_URL + MessageFormat.format(FIND_STOCKS, userId), UserStock[].class);
+	     
+	    return result.getBody();
+	}
+	
+	public static String sellUserStocks(String stockId)
+	{ 
+	    HttpHeaders headers = new HttpHeaders();
+	    headers.setContentType(MediaType.APPLICATION_JSON);
+	    
+	    RestTemplate restTemplate = new RestTemplate();
+	    
+	    String url = SERVER_URL + MessageFormat.format(SELL_STOCK, stockId);
+			
+	    ResponseEntity<String> result = restTemplate.getForEntity(url, String.class);
+ 
+	    return result.getBody();
+	}
+}

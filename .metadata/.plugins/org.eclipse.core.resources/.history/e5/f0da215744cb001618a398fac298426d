@@ -1,0 +1,14 @@
+<h1>User Portfolio ({{mode}})</h1>
+
+<label>User ID: <input #userId /></label>
+<button (click)="getPortfoloio(userId.value); userId.value=''">Get Portfolio</button>
+
+
+<h3>Portfolio:</h3>
+
+<ul>
+  <li *ngFor="let stock of stocks">{{stock.name}}</li>
+</ul>
+
+
+<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>

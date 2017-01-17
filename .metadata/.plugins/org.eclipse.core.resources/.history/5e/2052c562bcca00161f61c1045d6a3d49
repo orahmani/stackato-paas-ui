@@ -1,0 +1,31 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'portfolio-comp',
+  templateUrl: './portfolio.component.html',
+})
+
+export class PortfolioComponent implements OnInit{
+	errorMessage: string;
+  	stocks: UserStock[];
+  	mode = 'Observable';
+
+	constructor (private portfolioService: PortfolioService) {}
+	
+	ngOnInit() { this.getPortfolio(); }
+	
+	getPortfolio() {
+	    this.portfolioService.getPortfolio()
+	                     .subscribe(
+	                       stocks => this.stocks = stocks,
+	                       error =>  this.errorMessage = <any>error);
+	}
+	
+	addStock (name: string) {
+	    if (!name) { return; }
+	    this.portfolioService.addStock(name)
+	                     .subscribe(
+	                       stock  => this.stocks.push(stock),
+	                       error =>  this.errorMessage = <any>error);
+	}
+}

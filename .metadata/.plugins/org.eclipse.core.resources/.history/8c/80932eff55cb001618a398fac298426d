@@ -1,0 +1,27 @@
+<h1>Add Stock</h1>
+
+<label>User ID: <input #userId /></label>
+<label>Symbol: <input #symbol /></label>
+<label>Quantity: <input #quantity /></label>
+<button (click)="addStock(userId.value, symbol.value, quantity.value); userId.value='', symbol.value='', quantity.value=''">Add Stock</button>
+
+
+<h3>Stock Details:</h3>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Symbol</th>
+		<th>quantity</th>
+		<th>Price</th>
+	</tr>
+	<tr *ngFor="let stock of stocks">
+		<td>{{stock.name}}</td>
+		<td>{{stock.symbol}}</td>
+		<td>{{stock.quantity}}</td>
+		<td>{{stock.price}}</td>
+	</tr>
+</table>
+
+
+<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>

@@ -1,0 +1,8 @@
+<h1>User Portfolio ({{mode}})</h1>
+<h3>Portfolio:</h3>
+<ul>
+  <li *ngFor="let stock of stocks">{{hero.name}}</li>
+</ul>
+<label>New hero name: <input #newHeroName /></label>
+<button (click)="addHero(newHeroName.value); newHeroName.value=''">Add Hero</button>
+<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>

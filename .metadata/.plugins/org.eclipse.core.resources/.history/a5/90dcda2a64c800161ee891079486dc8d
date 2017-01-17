@@ -1,0 +1,5 @@
+package com.poalim.paas.mngr.ui;
+
+public class HomeController {
+
+}

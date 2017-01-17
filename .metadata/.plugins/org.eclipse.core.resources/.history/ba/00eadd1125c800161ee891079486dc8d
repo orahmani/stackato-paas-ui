@@ -1,0 +1,37 @@
+package com.poalim.paas.mngr.connectors;
+
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+
+import com.poalim.paas.mngr.model.UserStock;
+
+public class UserPortfolioConnector {
+	
+	private static final String userProtfolioServiceUrl = "https://portfolio1.cfapps.io/userstock/buy";
+	
+	public static String addStock(UserStock stock)
+	{ 
+	    HttpHeaders headers = new HttpHeaders();
+	    headers.setContentType(MediaType.APPLICATION_JSON);
+
+	    StringBuffer requestJson = new StringBuffer();
+	    requestJson.append("{\"userId\":\"").append(stock.getUserId()).append("\",");
+	    requestJson.append("\"name\":\"").append(stock.getName()).append("\",");
+	    requestJson.append("\"symbol\":\"").append(stock.getSymbol()).append("\",");
+	    requestJson.append("\"quantity\":").append(stock.getQuantity()).append(",");
+	    requestJson.append("\"price\":").append(stock.getPrice()).append("");
+	    requestJson.append("}");
+
+	    HttpEntity<String> entity = new HttpEntity<String>(requestJson.toString(),headers);
+
+	    RestTemplate restTemplate = new RestTemplate();
+	    
+	    ResponseEntity<String> result = restTemplate.postForEntity(userProtfolioServiceUrl, entity, String.class);
+	     
+	    return result.getHeaders().get("Location").get(0);
+	}
+
+}
